@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+{{ entities }}
+  <ul class=entries>
+  {% for entry in entities %}
+    <li><h2><a href="{{ url_for('get_branches', repo=entry.full_name) }}">{{ entry.full_name }}</a></h2>{{ entry.ssh_url }}
+  {% else %}
+    <li><em>Unbelievable.  No branches for this repo so far</em>
+  {% endfor %}
+  </ul>
+{% endblock %}

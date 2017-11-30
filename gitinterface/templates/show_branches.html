@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2>{{ repo }}</h2>
+  <ul class=entries>
+  {% for entry in entities %}
+      <li><h2><a href="{{url_for('deploy_branch', repo=repo, branch=entry.name)}}">{{ entry.name }}</a></h2>{{ entry.commit.sha|safe }}
+  {% else %}
+    <li><em>Unbelievable.  No branches for this repo so far</em>
+  {% endfor %}
+  </ul>
+{% endblock %}
